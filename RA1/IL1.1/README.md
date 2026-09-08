@@ -6,7 +6,7 @@ Esta unidad introduce los conceptos fundamentales de los Modelos de Lenguaje Gra
 
 ## Videos de cada archivo del curso:
 
-- **1-gemini_model_api.ipynb**: Conexión directa a la API de Gemini.
+- **1-groq_model_api.ipynb**: Conexión directa a la API de Groq.
   [![Ver Video](https://img.youtube.com/vi/oYvwSROBTl0/hqdefault.jpg)](https://www.youtube.com/watch?v=oYvwSROBTl0)
 - **2-langchain_model_api.ipynb**: Abstracción de la API con LangChain.
   [![Ver Video](https://img.youtube.com/vi/v6Dgw0CMAfs/hqdefault.jpg)](https://www.youtube.com/watch?v=v6Dgw0CMAfs)
@@ -29,15 +29,15 @@ Al completar esta unidad, serás capaz de:
 
 Este módulo está compuesto por cuatro cuadernos de Jupyter que te guiarán progresivamente desde una conexión básica hasta la creación de un chatbot con memoria.
 
-### Notebook 1: Conexión Directa con Gemini API (`1-gemini_model_api.ipynb`)
-Este cuaderno es el punto de partida. Aprenderás a realizar llamadas directas a un modelo de lenguaje utilizando la API de Gemini y el cliente de OpenAI.
+### Notebook 1: Conexión Directa con Groq API (`1-groq_model_api.ipynb`)
+Este cuaderno es el punto de partida. Aprenderás a realizar llamadas directas a un modelo de lenguaje utilizando la API de Groq y el cliente de OpenAI.
 - **Qué aprenderás**:
     - Configurar las variables de entorno y el cliente de `openai`.
     - Realizar una llamada básica `chat.completions.create`.
     - Usar parámetros clave como `model`, `messages`, `temperature` y `max_tokens`.
     - Aplicar el rol `system` para guiar el comportamiento del modelo.
 - **Cómo usarlo**:
-    1. Asegúrate de tener las variables de entorno `GEMINI_BASE_URL` y `GEMINI_API_KEY` configuradas.
+    1. Asegúrate de tener las variables de entorno `GROQ_BASE_URL` y `GROQ_API_KEY` configuradas.
     2. Instala la dependencia `openai`.
     3. Ejecuta las celdas secuencialmente para ver cómo se establece la conexión y se interactúa con el modelo.
 
@@ -83,8 +83,8 @@ Un LLM no tiene estado. Este cuaderno enseña cómo darle "memoria" para que pue
 ### Variables de Entorno Requeridas
 
 ```bash
-export GEMINI_BASE_URL="https://generativelanguage.googleapis.com/v1beta/openai/"
-export GEMINI_API_KEY="tu_token_de_gemini"
+export GROQ_BASE_URL="https://api.groq.com/openai/v1"
+export GROQ_API_KEY="tu_token_de_groq"
 ```
 
 ### Dependencias
@@ -102,8 +102,8 @@ pip install openai langchain langchain-openai
 from openai import OpenAI
 
 client = OpenAI(
-    base_url=os.environ.get("GEMINI_BASE_URL"),
-    api_key=os.environ.get("GEMINI_API_KEY")
+    base_url=os.environ.get("GROQ_BASE_URL"),
+    api_key=os.environ.get("GROQ_API_KEY")
 )
 ```
 
@@ -114,9 +114,9 @@ client = OpenAI(
 from langchain_openai import ChatOpenAI
 
 llm = ChatOpenAI(
-    base_url=os.getenv("OPENAI_BASE_URL"),
-    api_key=os.getenv("GEMINI_API_KEY"),
-    model="gpt-4o"
+    base_url=os.getenv("GROQ_BASE_URL"),
+    api_key=os.getenv("GROQ_API_KEY"),
+    model="openai/gpt-oss-120b"
 )
 ```
 
@@ -147,7 +147,7 @@ Esta unidad incluye:
 ## Recursos Adicionales
 
 - [Documentación OpenAI API](https://platform.openai.com/docs)
-- [Gemini API Documentation](https://ai.google.dev/gemini-api/docs)
+- [Groq API Documentation](https://console.groq.com/docs/models)
 - [LangChain Documentation](https://python.langchain.com/docs/)
 - [Transformer Architecture Paper](https://arxiv.org/abs/1706.03762)
 

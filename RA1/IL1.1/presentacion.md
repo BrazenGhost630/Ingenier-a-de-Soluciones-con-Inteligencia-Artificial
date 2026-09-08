@@ -19,7 +19,7 @@
 - **Arquitectura:** Basados en Transformers
 - **Funcionamiento:** Predicción de tokens basada en contexto
 - **Capacidades:** Generación, comprensión y análisis de texto
-- **Proveedores principales:** OpenAI, Gemini, Anthropic, Google
+- **Proveedores principales:** OpenAI, Groq, Anthropic, Google
 
 **Conceptos clave:**
 - Tokens, embeddings, atención
@@ -32,8 +32,8 @@
 
 **Variables de entorno requeridas:**
 ```bash
-export GEMINI_BASE_URL="https://generativelanguage.googleapis.com/v1beta/openai/"
-export GEMINI_API_KEY="tu_token_de_gemini"
+export GROQ_BASE_URL="https://api.groq.com/openai/v1"
+export GROQ_API_KEY="tu_token_de_groq"
 ```
 
 **Dependencias:**
@@ -49,7 +49,7 @@ pip install openai langchain langchain-openai
 ---
 
 ## Slide 4: Conexión Directa con API
-**Título:** Notebook 1 - Gemini API
+**Título:** Notebook 1 - Groq API
 
 **Pasos a seguir:**
 1. Configurar cliente OpenAI con base_url personalizada
@@ -61,8 +61,8 @@ pip install openai langchain langchain-openai
 **Código básico:**
 ```python
 client = OpenAI(
-    base_url=os.environ.get("GEMINI_BASE_URL"),
-    api_key=os.environ.get("GEMINI_API_KEY")
+    base_url=os.environ.get("GROQ_BASE_URL"),
+    api_key=os.environ.get("GROQ_API_KEY")
 )
 ```
 
@@ -80,9 +80,9 @@ client = OpenAI(
 **Implementación:**
 ```python
 llm = ChatOpenAI(
-    base_url=os.getenv("OPENAI_BASE_URL"),
-    api_key=os.getenv("GEMINI_API_KEY"),
-    model="gpt-4o"
+    base_url=os.getenv("GROQ_BASE_URL"),
+    api_key=os.getenv("GROQ_API_KEY"),
+    model="openai/gpt-oss-120b"
 )
 ```
 
@@ -173,7 +173,7 @@ for chunk in llm.stream([HumanMessage(content=prompt)]):
 
 **Recursos adicionales:**
 - [Documentación OpenAI API](https://platform.openai.com/docs)
-- [Gemini API Documentation](https://ai.google.dev/gemini-api/docs)
+- [Groq API Documentation](https://console.groq.com/docs/models)
 - [LangChain Documentation](https://python.langchain.com/docs/)
 - [Transformer Architecture Paper](https://arxiv.org/abs/1706.03762)
 
